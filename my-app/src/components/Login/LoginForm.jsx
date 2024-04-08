@@ -2,8 +2,13 @@ import React, { useState } from 'react'
 import './LoginForm.css';
 import { Outlet, Link } from "react-router-dom";
 import { FaUser, FaLock } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+
+import axios from 'axios'
+
 
 const LoginForm = () => {
+    let history = useNavigate();
 
     const [user, setUser] = useState({
         email: "",
@@ -12,17 +17,32 @@ const LoginForm = () => {
 
     const handleChange = (e) => {
         setUser({ ...user, [e.target.name]: e.target.value });
-        console.log(user)
+        console.log(user);
     }
-
-    const submitForm = (e) => {
-        e.prevenDefault();
-        user = {
+    const submitForm = async (e) => {
+        e.preventDefault();
+        const sendData = {
             email: user.email,
             password: user.password
         }
+        console.log(sendData);
 
-        console.log()
+        axios.post('login-api/login.php', sendData).then((result) => {
+
+            console.log(result);
+
+            if (result.data.status === 200) {
+                history('/dashboard');
+            }
+            else {
+
+            }
+        })
+
+
+
+
+
     }
 
 
@@ -58,4 +78,4 @@ const LoginForm = () => {
     )
 }
 
-export default LoginForm
+export default LoginForm;
