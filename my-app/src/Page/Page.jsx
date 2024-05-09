@@ -1,12 +1,12 @@
 import React from 'react';
-import HeroAll from '../components/HeroAll';
 import IMG2 from '../assets/image/page.jpg';
 import '../styles/Page.css'; // Import your CSS file
+import CommonSection from '../Shared/CommonSection';
 
 const Page = () => {
     return (
         <div className="min-vh-100 pt-5 bg-light">
-            <HeroAll title="Page" />
+            <CommonSection title="Page" />
             <div className="description font-times-new-roman" style={{ paddingTop: '20px', marginTop: '20px', backgroundColor: 'rgba(225, 223, 223, 0.578)' }}>
                 <div className="page-container">
                     <div className="row" style={{ paddingTop: '30px', paddingBottom: '30px' }}>

@@ -1,13 +1,13 @@
 import React from "react";
-import HeroAll from "../components/HeroAll";
 import '../styles/About.css'
 import BlogsComp from "../components/Blog/BlogComp";
 import Location from "../components/Location/Location";
+import CommonSection from "../Shared/CommonSection";
 
 const About = () => {
     return (
         <div className=" pt-5 bg-light">
-            <HeroAll title={"About"} />
+            <CommonSection title={"About"} />
 
             <div className="about-container "  >
                 <h1 className="About_us">

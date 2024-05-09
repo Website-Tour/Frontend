@@ -16,6 +16,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import About from "../Page/About";
 import ScrollToTop from "../utils/scrolltoTop";
 import DesDetail from "../Page/DesDetail";
+import BookingForm from "../Page/Booking";
+import TourDetails from "../Page/TourDetails";
 
 
 
@@ -51,6 +53,8 @@ function App() {
             <Route path="blog" element={<Blog />} />
             <Route path="blogs/:id" element={<BlogsDetails />} />
             <Route path="des/:id" element={<DesDetail />} />
+            <Route path="/tours/:id" element={<TourDetails />} />
+
 
 
 
@@ -58,6 +62,7 @@ function App() {
           </Route >
           <Route path="/login" element={<LoginForm />} />
           <Route path="/register" element={<RegisterForm />} />
+          <Route path="/booking" element={<BookingForm />} />
 
 
         </Routes>
