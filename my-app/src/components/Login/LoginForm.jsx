@@ -1,19 +1,33 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import './LoginForm.css';
-import { Outlet, Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaUser, FaLock } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import Navbar from '../Navbar/Navbar';
+import { FaRegEye } from "react-icons/fa";
+import axios from 'axios';
+import { AuthContext } from '../../context/AuthContext';
 
-import axios from 'axios'
+
 
 
 const LoginForm = () => {
-    let history = useNavigate();
 
     const [user, setUser] = useState({
         email: "",
         password: ""
     })
+    const [error, setError] = useState(null);
+    const [success, setSuccess] = useState(null);
+    const [showPassword, setShowPassword] = useState(false);
+
+
+
+
+
+    const navigate = useNavigate();
+
+
+
 
     const handleChange = (e) => {
         setUser({ ...user, [e.target.name]: e.target.value });
@@ -21,60 +35,79 @@ const LoginForm = () => {
     }
     const submitForm = async (e) => {
         e.preventDefault();
+
+        setError(null);
         const sendData = {
             email: user.email,
             password: user.password
         }
-        console.log(sendData);
-
         axios.post('login-api/login.php', sendData).then((result) => {
 
-            console.log(result);
+
 
             if (result.data.status === 200) {
-                history('/dashboard');
+                setSuccess("Login successful!");
+
+                setTimeout(() => {
+                    navigate("/");
+                }, 1000);
             }
             else {
-
+                alert('Invalid User');
             }
         })
 
 
-
-
-
     }
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
 
 
 
     return (
-        <div className='wrapper'>
-            <form onSubmit={submitForm}>
-                <h1>Login</h1>
-                <div className='input-box'>
-                    <input type="text" placeholder='Email'
-                        name='email' onChange={handleChange} value={user.email} required />
-                    <FaUser className='icon' />
 
-                </div>
-                <div className='input-box'>
-                    <input type="password" placeholder='Password' name='password' onChange={handleChange} value={user.password} required />
-                    <FaLock className='icon' />
-                </div>
+        <div className='container-login'>
+            <Navbar />
+            <div className='wrapper-lg'>
+                <form onSubmit={submitForm}>
+                    <h1>Login</h1>
+                    {error && <div className="alert alert-danger">{error}</div>}
+                    {success && <div className="alert alert-success">{success}</div>}
+                    <div className='input-box-login'>
+                        <input type="text" placeholder='Email'
+                            name='email' onChange={handleChange} value={user.email} required />
+                        <FaUser className='icon' />
 
-                <div className='remember-forgot'>
-                    <label ><input type='checkbox' />Remember me</label>
-                    <a href="#">Forgot Password</a>
-                </div>
+                    </div>
+                    <div className='input-box-login'>
+                        <input type={showPassword ? "text" : "password"} placeholder='Password' name='password' onChange={handleChange} value={user.password} required />
+                        <FaLock className='icon' />
+                    </div>
+                    <div className='show_pass'>
+                        <div className={'{ showPassword? "-slash": "" }'}
+                            onClick={togglePasswordVisibility}>
+                            <FaRegEye className='eye' />
 
-                <button type='submit'>Login</button>
 
-                <div className='register-link'>
-                    <p>Don't have an account? <Link to="/register">Register</Link> </p>
+                        </div>
+                    </div>
 
-                </div>
-            </form>
-        </div>
+                    <div className='remember-forgot-lg'>
+                        <label ><input type='checkbox' />Remember me</label>
+                        <a href="#">Forgot Password</a>
+                    </div>
+
+
+                    <button type='submit'>Login</button>
+
+                    <div className='register-link'>
+                        <p>Don't have an account? <Link to="/register">Register</Link> </p>
+
+                    </div>
+                </form>
+            </div >
+        </div >
     )
 }
 
