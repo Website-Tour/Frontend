@@ -1,41 +1,53 @@
 import React, { useEffect, useState } from "react";
-import CommonSection from "../Shared/CommonSection";
-import "../styles/Tour.css"
-import TourCard from "../Shared/TourCard";
-import { Container, Row, Col, Button } from "reactstrap";
+import LocationSection from '../../components/LocationSection/LocationSection';
+import Halong from "../../assets/image/HaLong.jpg";
+import CommonSection from '../../Shared/CommonSection';
 import axios from "axios";
-import SearchBar from "../components/Search";
+import TourCard from "../../Shared/TourCard";
+import { Container, Row, Col, Button } from "reactstrap";
 
 
+const CentralVN = () => {
+    const data = {
 
-const Tour = () => {
+        content1: "Vietnam's capital city is Hanoi. It is well-known for its many wonderful locations, cuisine, and the Hanoi people.Being born and raised in Hanoi makes me incredibly proud.A million people travel to Hanoi annually.Uncle Ho's Mausoleum, Hoa Lo Prison, Long Bien Bridge, One Pillar Pagoda, and many other places are popular tourist destinations in Hanoi.Each location   has a special historical significance that is sacred.In  regards to traffic, during the day, roads are congestedwith traffic, particularly during rush hours.",
+        content2: "Motorbikes are the mode of transportation     of choice for locals in Hanoi.The city's     lungs, which are full of lush trees, parks,    and lakes, keep the air clean and fresh.The    people of Hanoi are gracious, amiable, and   welcoming.If you visit Hanoi, you should sample   some of the city's well-known dishes, including   Phở - Vietnam rice noodles, noodle with fried   tofu & shrimp paste,...We perceive Hanoi as a city  that is both contemporary and historic.Everyone  who remembers Hanoi experiences an unforgettableemotion.I adore and am proud of my hometown, Hanoi.",
+        img: Halong,
+        img1: Halong,
 
+        img2: Halong,
+        img3: Halong,
+
+        img4: Halong,
+        img5: Halong,
+        img6: Halong,
+        img7: Halong,
+        img8: Halong,
+        img9: Halong,
+    };
     const [tours, setTours] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [paginatedTours, setPaginatedTours] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const toursPerPage = 8;
-
-
-
+    const toursPerPage = 4;
     const fetchData = async () => {
         try {
 
             setLoading(true);
 
 
-            const response = await axios.get(`/tour-api/tour_api.php`);
+            const response = await axios.get(`/tour-api/central_api.php`);
+
+
 
             const data = response.data;
 
-            console.log(data)
+            console.log(response)
 
-            if (data && data.tours) {
+            if (data) {
 
-
-
-                setTours(data.tours);
+                setTours(data);
 
                 setCurrentPage(1);
 
@@ -74,11 +86,12 @@ const Tour = () => {
         }
     };
 
-
     return (
-        <div className=" min-vh-100 pt-5  ">
-            <CommonSection title={"Our Tour"} />
-            <SearchBar />
+        <div className=" min-vh-100 pt-5  bg-light ">
+            <CommonSection title={"Central of VietNam"} />
+            <div className="pt-5 py-5 "  >
+                <LocationSection data={data} />
+            </div>
             <section className="pt-0">
                 <Container>
                     {loading ? (
@@ -109,8 +122,7 @@ const Tour = () => {
             </section>
         </div>
 
+    );
+};
 
-    )
-
-}
-export default Tour
+export default CentralVN;

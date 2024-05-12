@@ -42,7 +42,7 @@ const BlogsData = [
 const BlogsComp = () => {
     return (
         <>
-            <div className="bg-gray text-black py-5 pb-5">
+            <div className="bg-gray text-black mt-5 pt-5 my-5">
                 <section className="container ">
                     <h1 className="OLB"  >
                         Our Latest Blogs

@@ -1,6 +1,6 @@
 import React from 'react';
 import './index.css';
-
+import { Link } from 'react-router-dom';
 export default function WCU() {
   return (
     <div className='main-container-wcu'>
@@ -24,7 +24,10 @@ export default function WCU() {
           including versions of Lorem Ipsum.
         </span>
         <button className='contact-us'>
-          <span className='contact'>Contact us</span>
+          <Link to={`/About`}>
+            <span className='contact'>Contact us</span>
+          </Link>
+
         </button>
       </div>
       <div className='line-wcu' />

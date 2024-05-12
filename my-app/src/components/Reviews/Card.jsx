@@ -57,14 +57,14 @@ export const ReviewCards = ({ data }) => {
                         flex-col
                         justify-center
                         items-center'>
-                <div className='float-none inline-block mb-[12px]'> {/* listing-rating */}
+                <div className='float-none inline-block mb-[12px]'>
                     {renderStars(card.stars)}
                 </div>
             </div>
 
             <p className='text-gray-600 font-serif italic leading-6 pb-4 text-lg'>{card.description}</p>
 
-            <div className='flex flex-col items-center justify-center'> {/* testimonials-avatar */}
+            <div className='flex flex-col items-center justify-center'>
                 <h3 className='text-[28px] font-bold text-blue-gray-500'>{card.name}</h3>
                 <h4 className=' text-base text-blue-500'>{card.title}</h4>
             </div>

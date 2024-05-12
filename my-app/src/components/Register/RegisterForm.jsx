@@ -5,15 +5,19 @@ import { IoIosMail } from "react-icons/io";
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios'
 import Navbar from '../Navbar/Navbar';
+import { Alert } from 'reactstrap';
 
 
 
 
 const RegisterForm = () => {
+    const [isRegisterSuccess, setIsRegisterSuccess] = useState(false);
+    const [isRegisterFailed, setIsRegisterFailed] = useState(false);
+    const [registerMessage, setRegisterMessage] = useState('');
 
-    let history = useNavigate();
-    console.log("1")
 
+
+    const navigate = useNavigate();
     const [data, setdata] = useState({
         fullname: "",
         email: "",
@@ -28,7 +32,6 @@ const RegisterForm = () => {
 
     const handleChange = (e) => {
         setdata({ ...data, [e.target.name]: e.target.value });
-        console.log(data);
     }
 
     const submitForm = async (e) => {
@@ -39,19 +42,39 @@ const RegisterForm = () => {
             phone: data.phonenumber,
             password: data.password
         }
+        try {
 
 
-        axios.post('login-api/register.php', sendData).then((result) => {
+            axios.post('login-api/register.php', sendData).then((result) => {
 
-            if (result.data.status === 201) {
-                history('/login');
-            }
-            else {
 
-            }
-        })
+                if (result.data.status === 201) {
+                    setIsRegisterSuccess(true);
+                    setIsRegisterFailed(false);
+                    setRegisterMessage('Registration successful! Redirecting...');
+
+                    setTimeout(() => {
+                        navigate("/login");
+                    }, 1000);
+                }
+                else if (result.data.status === 422) {
+                    setIsRegisterFailed(true);
+                    setIsRegisterSuccess(false);
+                    setRegisterMessage(result.data.message || 'Failed to register. Please try again.');
+
+
+                }
+            })
+        } catch (error) {
+            setIsRegisterSuccess(false);
+            setIsRegisterFailed(true);
+
+
+
+        }
 
     }
+
 
 
 
@@ -64,6 +87,17 @@ const RegisterForm = () => {
             <Navbar />
 
             <div className='wrapper'>
+                {isRegisterSuccess && (
+                    <Alert color="success">
+                        {registerMessage}
+                    </Alert>
+                )}
+
+                {isRegisterFailed && (
+                    <Alert color="danger">
+                        {registerMessage}
+                    </Alert>
+                )}
                 <form onSubmit={submitForm}>
                     <h1>Register</h1>
 

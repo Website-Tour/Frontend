@@ -5,7 +5,9 @@ import { FaUser, FaLock } from "react-icons/fa";
 import Navbar from '../Navbar/Navbar';
 import { FaRegEye } from "react-icons/fa";
 import axios from 'axios';
-import { AuthContext } from '../../context/AuthContext';
+import { Alert } from 'reactstrap';
+import { AuthContext } from '../../context/AuthContext'
+
 
 
 
@@ -16,9 +18,14 @@ const LoginForm = () => {
         email: "",
         password: ""
     })
-    const [error, setError] = useState(null);
-    const [success, setSuccess] = useState(null);
+    const [isLoginSuccess, setIsLoginSuccess] = useState(false);
+    const [isLoginFailed, setLoginFailed] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
+    const [loginMessage, setLoginMessage] = useState('');
+
+    const { dispatch } = useContext(AuthContext);
+
+
 
 
 
@@ -31,37 +38,61 @@ const LoginForm = () => {
 
     const handleChange = (e) => {
         setUser({ ...user, [e.target.name]: e.target.value });
-        console.log(user);
     }
     const submitForm = async (e) => {
         e.preventDefault();
 
-        setError(null);
+        dispatch({ type: "LOGIN_START" });
+
+
         const sendData = {
             email: user.email,
             password: user.password
         }
-        axios.post('login-api/login.php', sendData).then((result) => {
+        try {
+
+            axios.post('login-api/login.php', sendData).then((result) => {
 
 
 
-            if (result.data.status === 200) {
-                setSuccess("Login successful!");
+                if (result.data.status === 200) {
+                    setIsLoginSuccess(true);
+                    setLoginFailed(false);
+                    setLoginMessage('Login Successful! Redirecting...')
+                    dispatch({ type: "LOGIN_SUCCESS", payload: result });
 
-                setTimeout(() => {
-                    navigate("/");
-                }, 1000);
-            }
-            else {
-                alert('Invalid User');
-            }
-        })
+
+                    setTimeout(() => {
+                        navigate("/");
+                    }, 1000);
+                }
+                else {
+                    setLoginFailed(true);
+                    setIsLoginSuccess(false);
+                    setLoginMessage(result.data.message || 'Failed to login. Please try again.');
+                    dispatch({ type: "LOGIN_FAILURE", payload: result.message });
+
+
+                }
+            })
+        } catch (error) {
+            setIsLoginSuccess(false);
+            setIsLoginSuccess(true);
+            dispatch({ type: "LOGIN_FAILURE", payload: error.message });
+
+
+
+
+        }
+
 
 
     }
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
+
+
 
 
 
@@ -72,8 +103,19 @@ const LoginForm = () => {
             <div className='wrapper-lg'>
                 <form onSubmit={submitForm}>
                     <h1>Login</h1>
-                    {error && <div className="alert alert-danger">{error}</div>}
-                    {success && <div className="alert alert-success">{success}</div>}
+                    {isLoginSuccess && (
+                        <Alert color="success">
+                            {loginMessage}
+                        </Alert>
+                    )}
+
+                    {isLoginFailed && (
+                        <Alert color="danger">
+                            {loginMessage}
+                        </Alert>
+                    )}
+
+
                     <div className='input-box-login'>
                         <input type="text" placeholder='Email'
                             name='email' onChange={handleChange} value={user.email} required />

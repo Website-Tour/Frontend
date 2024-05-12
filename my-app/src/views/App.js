@@ -15,10 +15,14 @@ import "aos/dist/aos.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import About from "../Page/About";
 import ScrollToTop from "../utils/scrolltoTop";
-import DesDetail from "../Page/DesDetail";
-import BookingForm from "../Page/Booking";
 import TourDetails from "../Page/TourDetails";
-
+import ThankYou from "../Page/ThankYou";
+import NorthernVN from "../Page/DesDetails/NorthVN";
+import SouthernVN from "../Page/DesDetails/SouthVN";
+import WestSide from "../Page/DesDetails/WestsideVN";
+import World from "../Page/DesDetails/World";
+import CentralVN from "../Page/DesDetails/CentralVN";
+import SearchResultList from "../components/Search/SearchResults";
 
 
 
@@ -52,8 +56,18 @@ function App() {
             <Route path="tour" element={<Tour />} />
             <Route path="blog" element={<Blog />} />
             <Route path="blogs/:id" element={<BlogsDetails />} />
-            <Route path="des/:id" element={<DesDetail />} />
-            <Route path="/tours/:id" element={<TourDetails />} />
+            <Route path="/tours/:tourid" element={<TourDetails />} />
+            <Route path="/thank-you" element={<ThankYou />} />
+            <Route path="/northernVN" element={<NorthernVN />} />
+            <Route path="/southVN" element={<SouthernVN />} />
+            <Route path="/westsideVN" element={<WestSide />} />
+            <Route path="/world" element={<World />} />
+            <Route path="/centralVN" element={<CentralVN />} />
+            <Route path="/search" element={<SearchResultList />} />
+
+
+
+
 
 
 
@@ -62,7 +76,7 @@ function App() {
           </Route >
           <Route path="/login" element={<LoginForm />} />
           <Route path="/register" element={<RegisterForm />} />
-          <Route path="/booking" element={<BookingForm />} />
+
 
 
         </Routes>

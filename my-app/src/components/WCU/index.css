@@ -233,3 +233,7 @@ button {
   text-align: left;
   z-index: 3;
 }
+
+.contact-us a {
+  text-decoration: none;
+}

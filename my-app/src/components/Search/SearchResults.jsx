@@ -1,44 +1,75 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
+import { Container, Row, Col, Button } from "reactstrap";
+import { useLocation, Link } from "react-router-dom";
+import './index.css'
+import TourCard from "../../Shared/TourCard";
+import CommonSection from "../../Shared/CommonSection";
 
-function SearchResults({ results }) {
+const SearchResultList = () => {
+    const location = useLocation();
+    const searchResult = location.state?.searchResult || [];
+    const [paginatedTours, setPaginatedTours] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const toursPerPage = 8;
+    const paginate = () => {
+        const startIndex = (currentPage - 1) * toursPerPage;
+        const endIndex = startIndex + toursPerPage;
+        setPaginatedTours(searchResult.slice(startIndex, endIndex));
+    };
+    useEffect(() => {
+        paginate();
+    }, [currentPage, searchResult]);
+    const nextPage = () => {
+        if (currentPage < Math.ceil(searchResult.length / toursPerPage)) {
+            setCurrentPage(currentPage + 1);
+        }
+    };
+
+    const prevPage = () => {
+        if (currentPage > 1) {
+            setCurrentPage(currentPage - 1);
+        }
+    };
+
     return (
-        <div className="ketquatiemkiem">
-            {results && Array.isArray(results) ? (
-                results.map((result) => (
-                    <div key={result.tourid} className="col-md-6 mb-4">
-                        <div className="card text-bg-dark">
-                            <img src={`../image/${result.image}`} className="card-img image pt" alt="image" />
-                            <div className="card-img-overlay">
-                                <div className="card-title text-right text-light mb-auto" style={{ fontSize: '15px', paddingBottom: '20%' }}>
-                                    From {result.giatour}$
+        <div>
+            <CommonSection title={"Search Results"} />
+            <section>
+                <Container>
+                    <Row>
+                        {searchResult.length === 0 ? (
+                            <Col lg="12">
+                                <div className="no-results">
+                                    <p>No search results found.</p>
+                                    <Button className="btn primary__btn w-25 align-items-center">
+                                        <Link to="/tour">Go to Tours</Link>
+                                    </Button>
                                 </div>
-                                <div className="flex-column h-100 justify-content-center">
-                                    <div className="text-center text-light">
-                                        <p className="card-text mb-2 text-left" style={{ fontSize: '13px' }}>
-                                            <i>{result.chitiet}</i>
-                                        </p>
-                                        <h5 className="card-title mb-3 text-center" style={{ fontSize: '30px' }}>
-                                            <b>{result.tentour}</b>
-                                        </h5>
-                                        <div className="card-title text-left text-light" style={{ fontSize: '15px' }}>
-                                            <i className="far fa-clock"></i> {result.duration} days
-                                        </div>
-                                        <div className="mt-3 text-center">
-                                            <a href={`../chitiettour/chitiet.php?idbaidang=${result.tourid}`} className="btn btn-outline-primary border border-white text-dark custom-btn">
-                                                More Information<i className="fa-solid fa-arrow-right"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            </Col>
+                        ) : (
+                            <Row>
+                                {Array.isArray(paginatedTours) &&
+                                    paginatedTours.map((tour) => (
+                                        <Col lg="3" md="6" sm="6" className="mb-4" key={tour.tourid}>
+                                            <TourCard tour={tour} />
+                                        </Col>
+                                    ))}
+                            </Row>
+                        )}
+                    </Row>
+                    <div className="pagination-controls mt-5 mb-5">
+                        <Button onClick={prevPage} disabled={currentPage === 1}>
+                            Previous
+                        </Button>
+                        <span className="mx-3">Page {currentPage}</span>
+                        <Button onClick={nextPage} disabled={currentPage >= Math.ceil(searchResult.length / toursPerPage)}>
+                            Next
+                        </Button>
                     </div>
-                ))
-            ) : (
-                <p>No search results found.</p>
-            )}
+                </Container>
+            </section>
         </div>
     );
-}
+};
 
-export default SearchResults;
+export default SearchResultList;

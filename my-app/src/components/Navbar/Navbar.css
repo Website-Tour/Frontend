@@ -2,20 +2,25 @@
 .nav-link.active {
 
     /* Màu của liên kết đang hoạt động */
-    font-weight: bolder ;
+    font-weight: bolder;
     text-decoration: underline;
-    color: black !important;
+    color: #ee6e6e !important;
+    opacity: 2;
 
 
     /* Đậm hơn */
     /* Bạn có thể thêm các hiệu ứng khác như gạch chân, thay đổi kích thước, v.v. */
 }
 
+.navbar {
+    max-width: 100%;
+}
+
 /* CSS for hover effect on nav links */
 
 
 .navbar {
-    background-color: transparent;
+    background-color: rgba(181, 181, 181, 0.5);
 
 
 }
@@ -33,7 +38,8 @@
 
 /* Khi hover vào navbar */
 .nav-link:hover {
-    color: black !important;
+    color: #ee6e6e !important;
+    opacity: 2;
     /* Chuyển màu thành đen khi hover */
 }
 
@@ -68,4 +74,34 @@ nav ul li:hover::after {
 
 nav ul li {
     font-weight: bold;
+
+}
+
+nav ul {
+    margin-left: 5rem;
+}
+
+@media only screen and (min-width: 992px) {
+    h5 {
+        font-size: 1rem;
+    }
+}
+
+.nav_right button {
+    font-size: 0.8rem;
+}
+
+.nav_right p {
+    font-size: 0.7rem;
+    margin-top: 1rem;
+}
+
+.nav_right {
+    justify-content: center;
+    align-items: center;
+}
+
+.nav_right button {
+    height: 3rem;
+    width: 5rem;
 }

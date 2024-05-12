@@ -27,7 +27,7 @@ class Reviews extends Component {
                 <img src={imgUrl} alt={username} className='img img-circle' />
                 <p className="username">{username}</p>
 
-                <p className="description">{description}</p>
+                <p className="description-review">{description}</p>
             </div>
         )
     }

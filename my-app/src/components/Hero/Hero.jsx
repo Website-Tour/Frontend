@@ -1,6 +1,7 @@
 import React from "react";
 import './Hero.css'
-import Search from "../Search";
+import SearchBar from "../Search";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
     return (
@@ -19,9 +20,12 @@ const Hero = () => {
             </div>
 
             <button class="button-tmt" >
-                <span class="take-me-there">Take me there</span>
+                <Link to={'/tours/11'}>
+                    <span class="take-me-there">Take me there</span>
+                </Link>
+
             </button>
-            <Search />
+            <SearchBar />
 
         </div >
 

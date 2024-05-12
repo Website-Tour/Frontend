@@ -16,36 +16,36 @@ export default function TopDes() {
                 data-aos-easing="ease-in-back"
                 data-aos-delay="300"
                 data-aos-offset="0">
-                <div className='south-vietnam' >
+                <Link to="/southVN" className='south-vietnam' >
                     <div className='southern-vietnam' />
                     <span className='southern-vietnam-1'>Southern Vietnam</span>
-                </div>
+                </Link>
                 <Link to="/northernVN" className='northern'>
                     <div className='northern-vietnam' />
                     <span className='northern-vietnam-2'>Northern Vietnam</span>
                 </Link>
-                <div className='central-of-vietnam'>
+                <Link to="/centralVN" className='central-of-vietnam'>
                     <div className='central-of-vietnam-3' />
                     <span className='central-of-vietnam-4'>Central of Vietnam</span>
-                </div>
+                </Link>
             </div>
             <div className='flex-row-dcf' data-aos="fade-zoom-in"
                 data-aos-easing="ease-in-back"
                 data-aos-delay="300"
                 data-aos-offset="0">
-                <div className='westside-vietnam'>
+                <Link to="westsideVN" className='westside-vietnam'>
                     <div className='westside' />
                     <span className='westside-vietnam-5'>
                         Westside Vietnam
                     </span>
-                </div>
-                <div className='world'>
+                </Link>
+                <Link to="world" className='world'>
                     <div className='world-8' />
                     <span className='world-101'>
                         World
                     </span>
-                </div>
+                </Link>
             </div>
-        </div>
+        </div >
     );
 }

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import "./Tourcard.css";
 import { useEffect } from "react";
 import { PiMapPinFill } from "react-icons/pi";
+import calculateAvgRating from "../utils/avgrating";
 
 
 const TourCard = ({ tour }) => {
