@@ -18,6 +18,7 @@ const ResetPassword = () => {
         new_pass: "",
         confirm_pass: "",
         email: "",
+        token: "",
     });
     const navigate = useNavigate();
     const location = useLocation();
@@ -36,6 +37,17 @@ const ResetPassword = () => {
             }));
         }
     }, [location.search]);
+    useEffect(() => {
+        const searchParams = new URLSearchParams(location.search);
+        const tokenParam = searchParams.get('token');
+        if (tokenParam) {
+            setNewPass(prevState => ({
+                ...prevState,
+                token: tokenParam
+            }));
+        }
+    }, [location.search]);
+    console.log(newpass)
 
 
     const handleChange = (e) => {
@@ -46,14 +58,25 @@ const ResetPassword = () => {
 
 
 
+
         const sendData = {
             password: newpass.new_pass,
             confirm_password: newpass.confirm_pass,
         }
         console.log(sendData)
+        if (newpass.token === "") {
+            setForgetFailed(true);
+            setIsForgetSuccess(false);
+            setforgetMessage("No Token");
+            setTimeout(() => {
+                navigate("/forgot");
+            }, 1000);
+            return;
+
+        }
 
         try {
-            const apiURL = `/login-api/reset.php?email=${newpass.email}`;
+            const apiURL = `/login-api/reset.php?email=${newpass.email}&token=${newpass.token}`;
 
             axios.post(apiURL, sendData).then((result) => {
 
