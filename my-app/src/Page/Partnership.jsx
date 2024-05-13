@@ -237,6 +237,23 @@ const Partnership = () => {
                                         </div>
                                     </div>
 
+
+
+
+
+                                    <div className="col-md-6" style={{ paddingTop: '20px' }}>
+                                        <div className="input-group">
+                                            <label style={{ marginRight: '5px' }}>Nhập ảnh bìa lên:</label>
+                                            <input type="text" className="form-control" id="image" placeholder="Nhập link ảnh" onChange={handleChange} required name="image" />
+                                        </div>
+                                    </div>
+
+                                    <div className="col-md-6" style={{ paddingTop: '20px' }}>
+                                        <div className="input-group">
+                                            <label style={{ marginRight: '5px' }}>Nhập các ảnh khác(nếu có) lên:</label>
+                                            <input type="text" className="form-control" id="images" onChange={handleChange} placeholder="Nhập link các ảnh, thêm dấu phẩy vào giữa các link" name="images" />
+                                        </div>
+                                    </div>
                                     <div className="col-md-3" style={{ paddingTop: '20px' }}>
                                         <div className="input-group">
                                             <label style={{ marginRight: '5px' }}>Ngày 1:</label>
@@ -255,25 +272,137 @@ const Partnership = () => {
                                     <div className="col-md-6" style={{ paddingTop: '20px' }}>
                                         <div className="input-group">
                                             <label style={{ marginRight: '5px' }}>Nội dung ngày 1:</label>
-                                            <textarea className="form-control" id="ndngay1" placeholder="Nội dung ngày 1 " onChange={handleChange} required name="ndngay1"></textarea>
+                                            <textarea className="form-control" id="ndngay1" placeholder="Nội dung ngày 1 " onChange={handleChange} name="ndngay1"></textarea>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-3" style={{ paddingTop: '20px' }}>
+                                        <div className="input-group">
+                                            <label style={{ marginRight: '5px' }}>Ngày 2:</label>
+                                            <input type="text" className="form-control" id="ngay2" placeholder="Ngày 2" name="ngay2" onChange={handleChange} />
                                         </div>
                                     </div>
 
+                                    <div className="col-md-3" style={{ paddingTop: '20px' }}>
+                                        <div className="input-group">
+                                            <label style={{ marginRight: '5px' }}>Ảnh ngày 2:</label>
+                                            <input type="text" className="form-control" id="imagengay2" name="imagengay2" onChange={handleChange} placeholder="Nhập link ảnh" />
+                                        </div>
+                                    </div>
 
 
                                     <div className="col-md-6" style={{ paddingTop: '20px' }}>
                                         <div className="input-group">
-                                            <label style={{ marginRight: '5px' }}>Nhập ảnh bìa lên:</label>
-                                            <input type="text" className="form-control" id="image" placeholder="Nhập link ảnh" onChange={handleChange} required name="image" />
+                                            <label style={{ marginRight: '5px' }}>Nội dung ngày 2:</label>
+                                            <textarea className="form-control" id="ndngay2" placeholder="Nội dung ngày 2 " onChange={handleChange} name="ndngay2"></textarea>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-3" style={{ paddingTop: '20px' }}>
+                                        <div className="input-group">
+                                            <label style={{ marginRight: '5px' }}>Ngày 3:</label>
+                                            <input type="text" className="form-control" id="ngay3" placeholder="Ngày 3" name="ngay3" onChange={handleChange} />
                                         </div>
                                     </div>
 
-                                    <div className="col-md-6" style={{ paddingTop: '20px' }}>
+                                    <div className="col-md-3" style={{ paddingTop: '20px' }}>
                                         <div className="input-group">
-                                            <label style={{ marginRight: '5px' }}>Nhập các ảnh khác(nếu có) lên:</label>
-                                            <input type="text" className="form-control" id="images" onChange={handleChange} placeholder="Nhập link các ảnh, thêm dấu phẩy vào giữa các link" name="images" />
+                                            <label style={{ marginRight: '5px' }}>Ảnh ngày 3:</label>
+                                            <input type="text" className="form-control" id="imagengay3" name="imagengay3" onChange={handleChange} placeholder="Nhập link ảnh" />
                                         </div>
                                     </div>
+
+
+                                    <div className="col-md-6" style={{ paddingTop: '20px' }}>
+                                        <div className="input-group">
+                                            <label style={{ marginRight: '5px' }}>Nội dung ngày 3:</label>
+                                            <textarea className="form-control" id="ndngay3" placeholder="Nội dung ngày 3 " onChange={handleChange} name="ndngay3"></textarea>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-3" style={{ paddingTop: '20px' }}>
+                                        <div className="input-group">
+                                            <label style={{ marginRight: '5px' }}>Ngày 4:</label>
+                                            <input type="text" className="form-control" id="ngay4" placeholder="Ngày 4" name="ngay4" onChange={handleChange} />
+                                        </div>
+                                    </div>
+
+                                    <div className="col-md-3" style={{ paddingTop: '20px' }}>
+                                        <div className="input-group">
+                                            <label style={{ marginRight: '5px' }}>Ảnh ngày 4:</label>
+                                            <input type="text" className="form-control" id="imagengay4" name="imagengay4" onChange={handleChange} placeholder="Nhập link ảnh" />
+                                        </div>
+                                    </div>
+
+
+                                    <div className="col-md-6" style={{ paddingTop: '20px' }}>
+                                        <div className="input-group">
+                                            <label style={{ marginRight: '5px' }}>Nội dung ngày 4:</label>
+                                            <textarea className="form-control" id="ndngay4" placeholder="Nội dung ngày 4 " onChange={handleChange} name="ndngay4"></textarea>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-3" style={{ paddingTop: '20px' }}>
+                                        <div className="input-group">
+                                            <label style={{ marginRight: '5px' }}>Ngày 5:</label>
+                                            <input type="text" className="form-control" id="ngay5" placeholder="Ngày 5" name="ngay5" onChange={handleChange} />
+                                        </div>
+                                    </div>
+
+                                    <div className="col-md-3" style={{ paddingTop: '20px' }}>
+                                        <div className="input-group">
+                                            <label style={{ marginRight: '5px' }}>Ảnh ngày 5:</label>
+                                            <input type="text" className="form-control" id="imagengay5" name="imagengay5" onChange={handleChange} placeholder="Nhập link ảnh" />
+                                        </div>
+                                    </div>
+
+
+                                    <div className="col-md-6" style={{ paddingTop: '20px' }}>
+                                        <div className="input-group">
+                                            <label style={{ marginRight: '5px' }}>Nội dung ngày 5:</label>
+                                            <textarea className="form-control" id="ndngay5" placeholder="Nội dung ngày 5 " onChange={handleChange} name="ndngay5"></textarea>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-3" style={{ paddingTop: '20px' }}>
+                                        <div className="input-group">
+                                            <label style={{ marginRight: '5px' }}>Ngày 6:</label>
+                                            <input type="text" className="form-control" id="ngay6" placeholder="Ngày 6" name="ngay6" onChange={handleChange} />
+                                        </div>
+                                    </div>
+
+                                    <div className="col-md-3" style={{ paddingTop: '20px' }}>
+                                        <div className="input-group">
+                                            <label style={{ marginRight: '5px' }}>Ảnh ngày 6:</label>
+                                            <input type="text" className="form-control" id="imagengay6" name="imagengay6" onChange={handleChange} placeholder="Nhập link ảnh" />
+                                        </div>
+                                    </div>
+
+
+                                    <div className="col-md-6" style={{ paddingTop: '20px' }}>
+                                        <div className="input-group">
+                                            <label style={{ marginRight: '5px' }}>Nội dung ngày 6:</label>
+                                            <textarea className="form-control" id="ndngay6" placeholder="Nội dung ngày 6 " onChange={handleChange} name="ndngay6"></textarea>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-3" style={{ paddingTop: '20px' }}>
+                                        <div className="input-group">
+                                            <label style={{ marginRight: '5px' }}>Ngày 7:</label>
+                                            <input type="text" className="form-control" id="ngay7" placeholder="Ngày 7" name="ngay7" onChange={handleChange} />
+                                        </div>
+                                    </div>
+
+                                    <div className="col-md-3" style={{ paddingTop: '20px' }}>
+                                        <div className="input-group">
+                                            <label style={{ marginRight: '5px' }}>Ảnh ngày 7:</label>
+                                            <input type="text" className="form-control" id="imagengay7" name="imagengay7" onChange={handleChange} placeholder="Nhập link ảnh" />
+                                        </div>
+                                    </div>
+
+
+                                    <div className="col-md-6" style={{ paddingTop: '20px' }}>
+                                        <div className="input-group">
+                                            <label style={{ marginRight: '5px' }}>Nội dung ngày 7:</label>
+                                            <textarea className="form-control" id="ndngay7" placeholder="Nội dung ngày 7 " onChange={handleChange} name="ndngay7"></textarea>
+                                        </div>
+                                    </div>
+
+
 
                                 </div>
                                 <button type="submit" className="btn btn-danger" id="submit-btn">Submit</button>

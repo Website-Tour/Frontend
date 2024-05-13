@@ -51,7 +51,6 @@ const Navbar = ({ handleOrderPopup }) => {
         dispatch({ type: "LOGOUT" });
         navigate("/");
     };
-    console.log(user);
 
 
 

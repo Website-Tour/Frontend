@@ -23,7 +23,7 @@ const BlogsDetails = (props) => {
         transform: isHovered ? 'scale(1.1)' : 'scale(1)',
         // transform: 'translateY(-20%)'
 
-    };  
+    };
 
     const imgStyle = {
         height: '100%',

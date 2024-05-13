@@ -57,11 +57,11 @@ const Footer = () => {
                     backdropFilter: "invert(35%)", // Increase blur effect here
                     opacity: 1,
                     justifyContent: 'center',
-                    margin: ' 25px 100px 50px 120px',
+                    margin: ' 25px 20px 50px 40px',
                     // Adjust opacity to your preference
                 }}>
                     <div className="row">
-                        <div className="col-md-4 py-8 px-4">
+                        <div className="col-lg-4 py-8 px-4">
                             <h1 className="d-flex align-items-center gap-3 text-xl sm:text-3xl font-bold">
                                 <img src={FooterLogo} alt="Footer Logo" style={{ height: '80px' }} />
                             </h1>
@@ -89,7 +89,7 @@ const Footer = () => {
                             </div>
 
                         </div>
-                        <div className="col-md-8">
+                        <div className="col-lg-8">
                             <div className="row">
                                 {['About Us', 'More Links', 'Useful Links'].map((title, index) => (
                                     <div key={index} className="col-sm-4">

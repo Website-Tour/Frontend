@@ -9,6 +9,7 @@ import BannerIMG from "../components/BannerIMG/BannerIMG";
 import Banner2 from "../assets/image/pexels-photo-346885.webp"
 import BlogsComp from "../components/Blog/BlogComp";
 import ReviewList from "../components/Reviews/ReviewList";
+import SearchBar from "../components/Search";
 const Home = () => {
 
     return (
@@ -17,6 +18,8 @@ const Home = () => {
 
             <div className="">
                 <Hero />
+                {/* <SearchBar /> */}
+
                 <HotTour />
                 <BannerIMG img={Banner1} />
                 <TopDes />

@@ -23,7 +23,8 @@ import WestSide from "../Page/DesDetails/WestsideVN";
 import World from "../Page/DesDetails/World";
 import CentralVN from "../Page/DesDetails/CentralVN";
 import SearchResultList from "../components/Search/SearchResults";
-
+import Forgot from "../components/Forget/Forget";
+import ResetPassword from "../components/Forget/ResetPass";
 
 
 
@@ -73,9 +74,14 @@ function App() {
 
 
 
+
+
           </Route >
           <Route path="/login" element={<LoginForm />} />
           <Route path="/register" element={<RegisterForm />} />
+          <Route path="/forgot" element={<Forgot />} />
+          <Route path="/resetpassword" element={<ResetPassword />} />
+
 
 
 
